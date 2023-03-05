@@ -13,7 +13,7 @@ import ImageIcon from '../assets/image.svg'
 
 const SearchInput = () => {
 
-  const [searchQuery, setSearchQuery] = useState("Search Google or type a URL");
+  const [searchQuery, setSearchQuery] = useState("");
 
 
 
@@ -26,17 +26,26 @@ const SearchInput = () => {
     >
       <AiOutlineSearch size={18} color="#9aa0a6" />
       <input
-        onChange={(e) => console.log(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value)}
         onKeyUp={(e) => console.log(e.target.value)}
         value={searchQuery}
         autoFocus
         className="grow outline-none text-black/[0.87]"
         type="text"
+        placeholder="Search Google or type a URL"
       />
 
       <div className="flex items-center gap-3">
-        <img className='h-6 w-6 cursor-pointer' src={MicIcon} alt="mic" />
-        <img className='h-6 w-6 cursor-pointer' src={ImageIcon} alt="mic" />
+        {searchQuery && (
+          <IoMdClose
+            size={24}
+            color="#707578"
+            className="cursor-pointer"
+            onClick={() => setSearchQuery("")}
+          />
+        )}
+        <img className="h-6 w-6 cursor-pointer" src={MicIcon} alt="mic" />
+        <img className="h-6 w-6 cursor-pointer" src={ImageIcon} alt="mic" />
       </div>
     </div>
   );
