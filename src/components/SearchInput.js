@@ -13,7 +13,15 @@ import ImageIcon from '../assets/image.svg'
 
 const SearchInput = () => {
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const {query} = useParams();
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState(query || "");
+
+  const searchQueryHandler = (event) => {
+    if(event.key == 'Enter' && searchQuery.length > 0) {
+      navigate(`/${searchQuery}/${1}`);
+    }
+  }
 
 
 
@@ -27,7 +35,7 @@ const SearchInput = () => {
       <AiOutlineSearch size={18} color="#9aa0a6" />
       <input
         onChange={(e) => setSearchQuery(e.target.value)}
-        onKeyUp={(e) => console.log(e.target.value)}
+        onKeyUp={searchQueryHandler}
         value={searchQuery}
         autoFocus
         className="grow outline-none text-black/[0.87]"

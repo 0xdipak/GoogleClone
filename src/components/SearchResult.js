@@ -1,8 +1,30 @@
-import React from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import { useParams } from 'react-router-dom'
+
+import {fetchDataFromApi} from '../utils/api'
+import SearchResultHeader from './SearchReasultHeader'
+import Footer from './Footer'
+import SearchedItemTemplate from './SearchedItemTemplate'
+import SearchedImagetemplate from './SearchedImageItemTemplate'
+import Pagination from './Pagination'
+import {Context} from '../utils/ContextApi'
+
+
+
+
+
+
+
+
+
 
 const SearchResult = () => {
   return (
-    <div>SearchResult</div>
+    <div className='flex flex-col min-h-[100vh]'>
+      <SearchResultHeader />
+      <main className="grow p-[12px] pb-0 md:pr-5 md:pl-20"></main>
+      <Footer />
+    </div>
   )
 }
 
